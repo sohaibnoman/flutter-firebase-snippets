@@ -98,10 +98,10 @@
     "Firestore Exist Doc": {
         "prefix": "existg",
         "body": [
-          "Future<bool> ${1:methodName}Exist(String id) async {",
+          "Future<bool> ${1:methodName}(${2:parameters}) async {",
           "    final document = await _firestore",
           "        .collection(${2:collection})",
-          "        .doc(id)",
+          "        .doc(${3:docID})",
           "        .get();",
           "    return document.exists;",
           "}"
@@ -111,8 +111,8 @@
     "Firestore Get Doc": {
         "prefix": "getd",
         "body": [
-          "Future<${1:dataType}> get${1:dataType}(String id) async {",
-          "    final document = await _firestore.collection(${2:collection}).doc(id).get();",
+          "Future<${1:dataType}> get${1:dataType}(${2:parameters}) async {",
+          "    final document = await _firestore.collection(${3:collection}).doc(${4:docID}).get();",
           "    return ${1:dataType}.fromFirestore(document);",
           "}"
         ],
