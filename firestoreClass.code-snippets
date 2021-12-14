@@ -16,7 +16,7 @@
 	// 	"description": "Log output to console"
 	// }
 	"Firestore Class 5 Variables": {
-		"prefix": "fclass5",
+		"prefix": "classf5",
 		"body": [
 		  "import 'package:cloud_firestore/cloud_firestore.dart';",
 		  "",
@@ -40,7 +40,7 @@
 		  "  factory ${1:className}.fromFirestore(DocumentSnapshot doc) {",
 		  "    final data = doc.data() as Map<String, dynamic>?;",
 		  "    if (data == null) {",
-		  "      throw 'Error creating Channel from null';",
+		  "      throw 'Error creating ${1:className} from null';",
 		  "    }",
 		  "    final ${2:firstType}? ${3:firstName} = data['${3:firstName}'];",
 		  "    final ${4:firstType}? ${5:firstName} = data['${5:firstName}'];",
@@ -55,7 +55,7 @@
 		  "      ${9:firstName} == null ||",
 		  "      ${11:firstName} == null",
 		  "    ) {",
-		  "      throw 'Error creating Channel from null values';",
+		  "      throw 'Error creating ${1:className} from null values';",
 		  "    }",
 		  "    return ${1:className}(",
 		  "      id: doc.id,",
@@ -82,7 +82,7 @@
 		"description": "Firestore Class"
 	  },
 	  "Firestore Class 4 Variables": {
-		"prefix": "fclass4",
+		"prefix": "classf4",
 		"body": [
 		  "import 'package:cloud_firestore/cloud_firestore.dart';",
 		  "",
@@ -104,7 +104,7 @@
 		  "  factory ${1:className}.fromFirestore(DocumentSnapshot doc) {",
 		  "    final data = doc.data() as Map<String, dynamic>?;",
 		  "    if (data == null) {",
-		  "      throw 'Error creating Channel from null';",
+		  "      throw 'Error creating ${1:className} from null';",
 		  "    }",
 		  "    final ${2:firstType}? ${3:firstName} = data['${3:firstName}'];",
 		  "    final ${4:firstType}? ${5:firstName} = data['${5:firstName}'];",
@@ -117,7 +117,7 @@
 		  "      ${7:firstName} == null ||",
 		  "      ${9:firstName} == null",
 		  "    ) {",
-		  "      throw 'Error creating Channel from null values';",
+		  "      throw 'Error creating ${1:className} from null values';",
 		  "    }",
 		  "    return ${1:className}(",
 		  "      id: doc.id,",
@@ -142,7 +142,7 @@
 		"description": "Firestore Class"
 	  },
 	  "Firestore Class 3 Variables": {
-		"prefix": "fclass3",
+		"prefix": "classf3",
 		"body": [
 		  "import 'package:cloud_firestore/cloud_firestore.dart';",
 		  "",
@@ -162,7 +162,7 @@
 		  "  factory ${1:className}.fromFirestore(DocumentSnapshot doc) {",
 		  "    final data = doc.data() as Map<String, dynamic>?;",
 		  "    if (data == null) {",
-		  "      throw 'Error creating Channel from null';",
+		  "      throw 'Error creating ${1:className} from null';",
 		  "    }",
 		  "    final ${2:firstType}? ${3:firstName} = data['${3:firstName}'];",
 		  "    final ${4:firstType}? ${5:firstName} = data['${5:firstName}'];",
@@ -173,7 +173,7 @@
 		  "      ${5:firstName} == null ||",
 		  "      ${7:firstName} == null ",
 		  "    ) {",
-		  "      throw 'Error creating Channel from null values';",
+		  "      throw 'Error creating ${1:className} from null values';",
 		  "    }",
 		  "    return ${1:className}(",
 		  "      id: doc.id,",
@@ -196,7 +196,7 @@
 		"description": "Firestore Class 3 Variables"
 	  },
 	  "Firestore Class 2 Variables": {
-		"prefix": "fclass2",
+		"prefix": "classf2",
 		"body": [
 		  "import 'package:cloud_firestore/cloud_firestore.dart';",
 		  "",
@@ -214,7 +214,7 @@
 		  "  factory ${1:className}.fromFirestore(DocumentSnapshot doc) {",
 		  "    final data = doc.data() as Map<String, dynamic>?;",
 		  "    if (data == null) {",
-		  "      throw 'Error creating Channel from null';",
+		  "      throw 'Error creating ${1:className} from null';",
 		  "    }",
 		  "    final ${2:firstType}? ${3:firstName} = data['${3:firstName}'];",
 		  "    final ${4:firstType}? ${5:firstName} = data['${5:firstName}'];",
@@ -223,7 +223,7 @@
 		  "      ${3:firstName} == null ||",
 		  "      ${5:firstName} == null ",
 		  "    ) {",
-		  "      throw 'Error creating Channel from null values';",
+		  "      throw 'Error creating ${1:className} from null values';",
 		  "    }",
 		  "    return ${1:className}(",
 		  "      id: doc.id,",

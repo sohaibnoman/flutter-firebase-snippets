@@ -1,0 +1,142 @@
+{
+	// Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+	// description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+	// is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+	// used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+	// Placeholders with the same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"scope": "javascript,typescript",
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Firestore Fetch Paging List": {
+        "prefix": "fetchpl",
+        "body": [
+          "final FirebaseFirestore _firestore = FirebaseFirestore.instance;",
+          "late DocumentSnapshot _last${1:dataType};",
+          "",
+          "Stream<List<${1:dataType}>> fetch${2:methodName}(int pageSize) {",
+          "    return _firestore",
+          "        .collection(${3:collectionName})",
+          "        .orderBy('${4:orderBy}', descending: true)",
+          "        .limit(pageSize)",
+          "        .snapshots()",
+          "        .map(",
+          "      (list) {",
+          "        if (list.docs.isNotEmpty) {",
+          "          _last${1:dataType} = list.docs.last;",
+          "        }",
+          "        return list.docs",
+          "            .map((document) => ${1:dataType}.fromFirestore(document))",
+          "            .toList();",
+          "      },",
+          "    );",
+          "}",
+          "",
+          "Future<List<${1:dataType}>> fetchMore${2:methodName}(int pageSize) async {",
+          "    final list = await _firestore",
+          "        .collection(${3:collectionName})",
+          "        .orderBy('${4:orderBy}', descending: true)",
+          "        .startAfterDocument(_last${1:dataType})",
+          "        .limit(pageSize)",
+          "        .get();",
+          "    if (list.docs.isNotEmpty) {",
+          "      _last${1:dataType} = list.docs.last;",
+          "    }",
+          "    return list.docs.map((document) => ${1:dataType}.fromFirestore(document)).toList();",
+          "}"
+        ],
+        "description": "Firestore Fetch Paging List"
+    },
+    "Firestore Fetch Doc": {
+        "prefix": "fetchd",
+        "body": [
+          "Stream<${1:dataType}> fetch${1:dataType}(${2:idType} ${3:id}){",
+          "    return _firestore",
+          "        .collection(${4:collection})",
+          "        .doc(${3:id})",
+          "        .snapshots()",
+          "        .map((document) => ${1:dataType}.fromFirestore(document));",
+          "}"
+        ],
+        "description": "Firestore Fetch Doc"
+    },
+    "Firestore Fetch Search": {
+        "prefix": "fetchs",
+        "body": [
+          "Stream<List<${1:dataType}>> search${1:dataType}(${2:matchType} ${3:matchOn}){",
+          "    return _firestore",
+          "        .collection(${4:collection})",
+          "        .where('${3:matchOn}', isEqualTo: ${3:matchOn})",
+          "        .snapshots()",
+          "        .map((list) => list.docs",
+          "            .map((document) => ${1:dataType}.fromFirestore(document))",
+          "            .toList());",
+          "}"
+        ],
+        "description": "Firestore Fetch Search"
+    },
+    "Firestore Exist Stream": {
+        "prefix": "existf",
+        "body": [
+          "Stream<bool> ${1:methodName}(String id) {",
+          "    return _firestore",
+          "        .collection(${2:collection))",
+          "        .doc(id)",
+          "        .snapshots()",
+          "        .map((doc) => doc.exists);",
+          "}"
+        ],
+        "description": "Firestore Exist Stream"
+    },
+    "Firestore Exist Doc": {
+        "prefix": "existg",
+        "body": [
+          "Future<bool> ${1:methodName}Exist(String id) async {",
+          "    final document = await _firestore",
+          "        .collection(${2:collection})",
+          "        .doc(id)",
+          "        .get();",
+          "    return document.exists;",
+          "}"
+        ],
+        "description": "Firestore Check Doc Exist"
+    },
+    "Firestore Get Doc": {
+        "prefix": "getd",
+        "body": [
+          "Future<${1:dataType}> get${1:dataType}(String id) async {",
+          "    final document = await _firestore.collection(${2:collection}).doc(id).get();",
+          "    return ${1:dataType}.fromFirestore(document);",
+          "}"
+        ],
+        "description": "Firestore Get Doc"
+    },
+    "Firestore Set Data": {
+        "prefix": "setd",
+        "body": [
+          "Future<void> set${1:dataType}(${1:dataType} object) {",
+          "    return _firestore",
+          "        .collection(${2:collection})",
+          "        .doc(object.id)",
+          "        .set(object.toMap(), SetOptions(merge: true));",
+          "}"
+        ],
+        "description": "Firestore Set Data"
+    },
+    "Firestore Get Id": {
+        "prefix": "getid",
+        "body": [
+          "String get${1:idName}() {",
+          "    return _firestore.collection(${2:collection}).doc().id;",
+          "}"
+        ],
+        "description": "Firestore Get Id"
+    }
+}
